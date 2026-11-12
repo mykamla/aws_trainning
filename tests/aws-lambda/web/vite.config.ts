@@ -1,8 +1,8 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
-// Local / preview: root. Adjust base if deploying under a subpath.
+// GitHub Pages: https://mykamla.github.io/aws_trainning/
 export default defineConfig({
   plugins: [react()],
-  base: '/',
+  base: '/aws_trainning/',
 })

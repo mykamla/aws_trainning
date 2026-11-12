@@ -4,6 +4,14 @@ Quiz interactif (React + Vite) pour pratiquer **AWS Lambda** — modèle d’ex�
 
 Interface en **français**. Progression persistée en `localStorage`.
 
+## Live (GitHub Pages)
+
+**https://mykamla.github.io/aws_trainning/**
+
+Déploiement automatique via `.github/workflows/deploy-pages.yml` à chaque push sur `main` (build de `tests/aws-lambda/web`).
+
+Réglage repo (une fois) : *Settings → Pages → Source = GitHub Actions*.
+
 ## Lancer en local
 
 ```bash
@@ -12,7 +20,14 @@ npm install
 npm run dev
 ```
 
-Ouvrez l’URL affichée (souvent `http://localhost:5173/`).
+Ouvrez l’URL affichée (souvent `http://localhost:5173/aws_trainning/`).
+
+### Sur téléphone (même Wi‑Fi)
+
+```bash
+cd tests/aws-lambda/web
+npm run dev -- --host
+```
 
 ### Build
 
@@ -21,6 +36,8 @@ cd tests/aws-lambda/web
 npm run build
 npm run preview
 ```
+
+`vite.config.ts` utilise `base: '/aws_trainning/'` pour Pages.
 
 ## Parcours
 
