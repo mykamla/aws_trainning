@@ -8,9 +8,16 @@ Interface en **français**. Progression persistée en `localStorage`.
 
 **https://mykamla.github.io/aws_trainning/**
 
-Déploiement automatique via `.github/workflows/deploy-pages.yml` à chaque push sur `main` (build de `tests/aws-lambda/web`).
+Déploiement automatique via `.github/workflows/deploy-pages.yml` à chaque push sur `main` (build de `tests/aws-lambda/web`, artefact `dist`, copie `404.html` pour le SPA).
 
-Réglage repo (une fois) : *Settings → Pages → Source = GitHub Actions*.
+### Si vous voyez un 404
+
+1. Vérifier *Settings → Pages → Source = GitHub Actions* :  
+   https://github.com/mykamla/aws_trainning/settings/pages  
+2. Relancer *Actions → Deploy GitHub Pages* (Re-run failed jobs).  
+3. Attendre le job `deploy` en vert, puis recharger l’URL ci-dessus.
+
+Le build CI a déjà été validé (`npm run build`, `base: '/aws_trainning/'`, artefact `tests/aws-lambda/web/dist`). Le blocage restant est uniquement l’activation Pages côté réglages du dépôt.
 
 ## Lancer en local
 

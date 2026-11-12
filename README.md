@@ -17,7 +17,14 @@ Quiz complet (home → module → question → feedback → résultats), calqué
 
 **URL publique (GitHub Pages) :** https://mykamla.github.io/aws_trainning/
 
-> Après le premier merge sur `main`, activez Pages si besoin : *Settings → Pages → Source = GitHub Actions*.
+### Activer Pages (obligatoire, une fois)
+
+Sans cette étape le site répond **404** et le job `deploy` du workflow échoue avec *Failed to create deployment*.
+
+1. Ouvrir https://github.com/mykamla/aws_trainning/settings/pages  
+2. **Source** = **GitHub Actions** (pas « Deploy from a branch »)  
+3. Relancer le workflow : *Actions → Deploy GitHub Pages → Re-run failed jobs*  
+   (ou *Run workflow* / nouveau push sur `main`)
 
 ### Lancer en local
 
