@@ -37,3 +37,4 @@ npm run dev
 Ouvrez l’URL affichée (souvent `http://localhost:5173/aws_trainning/`).
 
 Détails : [tests/aws-lambda/README.md](tests/aws-lambda/README.md).
+
