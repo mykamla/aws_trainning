@@ -8,6 +8,8 @@ Interface en **français**. Progression persistée en `localStorage`.
 
 **https://mykamla.github.io/aws_trainning/**
 
+**Cours (avant le quiz) :** https://mykamla.github.io/aws_trainning/course
+
 Déploiement automatique via `.github/workflows/deploy-pages.yml` à chaque push sur `main` (build de `tests/aws-lambda/web`, artefact `dist`, copie `404.html` pour le SPA).
 
 ### Si vous voyez un 404
