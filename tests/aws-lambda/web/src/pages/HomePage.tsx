@@ -12,6 +12,7 @@ export function HomePage() {
   const stats = overallStats(progress, counts)
   const weak = weakTopics(progress)
   const continueDay = progress.lastActiveDay
+  const hasStarted = stats.answered > 0 || Boolean(continueDay)
 
   return (
     <div className="stack">
@@ -24,18 +25,28 @@ export function HomePage() {
         </div>
         <h1 className="brand">AWS Lambda Prep</h1>
         <p className="tagline">
-          Quiz interactif en français — modèle d’exécution, triggers, IAM, packaging, retries et
-          observabilité, un module à la fois.
+          Cours puis quiz interactif en français — modèle d’exécution, triggers, IAM, packaging,
+          retries et observabilité.
         </p>
         <div className="actions">
-          {continueDay ? (
-            <Link className="btn btn-primary" to={`/day/${continueDay}`}>
-              Continuer · Module {continueDay}
-            </Link>
+          {!hasStarted ? (
+            <>
+              <Link className="btn btn-primary" to="/course">
+                Commencer par le cours
+              </Link>
+              <Link className="btn btn-secondary" to="/day/1">
+                Aller au module 1
+              </Link>
+            </>
           ) : (
-            <Link className="btn btn-primary" to="/day/1">
-              Commencer le module 1
-            </Link>
+            <>
+              <Link className="btn btn-primary" to={`/day/${continueDay ?? 1}`}>
+                Continuer · Module {continueDay ?? 1}
+              </Link>
+              <Link className="btn btn-secondary" to="/course">
+                Revoir le cours
+              </Link>
+            </>
           )}
           <button
             type="button"
@@ -48,6 +59,14 @@ export function HomePage() {
           </button>
         </div>
       </header>
+
+      <section className="card-panel">
+        <h2 style={{ fontSize: '1.15rem' }}>Parcours recommandé</h2>
+        <p style={{ marginBottom: 0 }}>
+          1. <Link to="/course">Cours</Link> (tous les concepts) → 2. Quiz module par module → 3.
+          Examens blancs 11–12.
+        </p>
+      </section>
 
       <section className="card-panel">
         <h2 style={{ fontSize: '1.15rem' }}>Progression globale</h2>

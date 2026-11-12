@@ -15,7 +15,8 @@ D’autres sujets (ex. IAM, S3) pourront être ajoutés plus tard, chacun dans s
 
 Quiz complet (home → module → question → feedback → résultats), calqué sur le flux du trainer OCP interactif.
 
-**URL publique (GitHub Pages) :** https://mykamla.github.io/aws_trainning/
+**URL publique (GitHub Pages) :** https://mykamla.github.io/aws_trainning/  
+**Cours d’intro :** https://mykamla.github.io/aws_trainning/course
 
 ### Activer Pages (obligatoire, une fois)
 
