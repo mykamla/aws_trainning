@@ -46,7 +46,9 @@ jobs:
           # Copy site files only — never push back to upstream
           cp -a /tmp/clf-c02-study/. "$DEST/"
           rm -rf "$DEST/.git"
-          # Record upstream tip for debugging deploy artifacts
+          # French hub: only link files that exist (upstream index has dead links
+          # that fall through to the Lambda SPA 404 under GitHub Pages)
+          python3 tests/clf-c02/build-hub.py "$DEST"
           git -C /tmp/clf-c02-study rev-parse HEAD > "$DEST/.upstream-sha"
           echo "Mirrored CLF-C02 at $(cat "$DEST/.upstream-sha") → /clf-c02/"
 

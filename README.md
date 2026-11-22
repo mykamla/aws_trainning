@@ -38,9 +38,10 @@ servis sous ce dépôt **sans modifier l’upstream**.
 
 **URL publique :** https://mykamla.github.io/aws_trainning/clf-c02/
 
-Le workflow Pages clone l’upstream en lecture seule à chaque déploiement et place
-les fichiers sous `/clf-c02/`. Les liens relatifs du site HTML fonctionnent tels quels
-sous ce sous-chemin. Détails : [tests/clf-c02/README.md](tests/clf-c02/README.md).
+Le workflow Pages clone l’upstream en lecture seule, puis génère un **hub français**
+(`tests/clf-c02/build-hub.py`) qui ne liste que les outils réellement présents
+(pas de flashcards séparées — les QCM sont dans les examens / drills).
+Détails & URLs : [tests/clf-c02/README.md](tests/clf-c02/README.md).
 
 ### Activer Pages (obligatoire, une fois)
 
