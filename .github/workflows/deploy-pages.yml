@@ -17,20 +17,39 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: tests/aws-lambda/web
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: npm
           cache-dependency-path: tests/aws-lambda/web/package-lock.json
-      - run: npm ci
-      - run: npm run build
+
+      - name: Install and build Lambda quiz
+        working-directory: tests/aws-lambda/web
+        run: |
+          npm ci
+          npm run build
+
       - name: SPA 404 fallback
+        working-directory: tests/aws-lambda/web
         run: cp dist/index.html dist/404.html
+
+      - name: Mirror CLF-C02 study tools (read-only clone)
+        run: |
+          set -euo pipefail
+          UPSTREAM="https://github.com/TushaeBXN/aws-clf-c02-study.git"
+          DEST="tests/aws-lambda/web/dist/clf-c02"
+          git clone --depth 1 "$UPSTREAM" /tmp/clf-c02-study
+          mkdir -p "$DEST"
+          # Copy site files only — never push back to upstream
+          cp -a /tmp/clf-c02-study/. "$DEST/"
+          rm -rf "$DEST/.git"
+          # Record upstream tip for debugging deploy artifacts
+          git -C /tmp/clf-c02-study rev-parse HEAD > "$DEST/.upstream-sha"
+          echo "Mirrored CLF-C02 at $(cat "$DEST/.upstream-sha") → /clf-c02/"
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: tests/aws-lambda/web/dist
